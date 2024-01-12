@@ -11,9 +11,6 @@ class Program
         if(Övning1(input, out int result))
         {
             Console.WriteLine($"Parsed: {result}");
-        } else 
-        {
-            Console.WriteLine("Fel Input. Skriv ett nummer");
         }
 
         bool Övning1(string input, out int number) 
@@ -25,9 +22,14 @@ class Program
             }
             catch (FormatException)
             {
-                number = 0;
-                return false;
+                Console.WriteLine("Fel Input. Skriv ett nummer");
             }
+            catch (OverflowException)
+            {
+                Console.WriteLine("För stort eller för litet tal. Ange ett tal inom det tillåtna intervallet för Int32.");
+            }
+            number = 0;
+            return false;
         }
     }
 }
